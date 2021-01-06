@@ -75,7 +75,15 @@
 				
 				</div>
 			</div>
-			
+			<div class="form-group">
+					<label for="">Ngày Sản Xuất</label>
+					<input type="date" name="NSX" value="{{old('NSX')?old('NSX'):''}}" class="form-control" id="" placeholder="Input field">
+				</div>
+
+				<div class="form-group">
+					<label for="">Hạn Sản Dụng</label>
+					<input type="date" name="HSD" value="{{old('HSD')?old('HSD'):''}}" class="form-control" id="" placeholder="Input field">
+				</div>
 		
 		</div>
 		<div class="col-6">

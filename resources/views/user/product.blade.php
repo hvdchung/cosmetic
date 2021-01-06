@@ -76,7 +76,7 @@
 				<div id="product-tab">
 					<!-- product tab nav -->
 					<ul class="tab-nav">
-						<li class="active"><a data-toggle="tab" href="#tab1">Thông số kĩ thuật </a></li>
+						<li class="active"><a data-toggle="tab" href="#tab1">Chi tiết sản phẩm </a></li>
 						
 						<li><a data-toggle="tab" href="#tab2">Đánh giá</a></li>
 					</ul>
@@ -90,6 +90,7 @@
 								<div class="col-md-8 col-md-offset-2">
 									<table class="table table-bordered success">
 										<thead>
+											
 											<tr >
 												<th class="danger">Tên</th>
 												<td>{{$itemProduct['name']}}</td>
@@ -107,10 +108,19 @@
 												<th class="danger">Bảo hành</th>
 												<td>{{$itemProduct['warranty']}}</td>
 											</tr>
+											
+											<tr> 
+												<th class="danger">NSX</th>
+												<td>{{date("d-m-Y", strtotime($itemProduct['NSX']))}}</td>
+											</tr>
 
+											<tr> 
+												<th class="danger">HSD</th>
+												<td>{{date("d-m-Y", strtotime($itemProduct['HSD']))}}</td>
+											</tr>
 
-
-										</thead>
+											<table class="table table-hover">
+                
 
 									</table>
 								</div>

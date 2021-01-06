@@ -117,12 +117,15 @@ class ProductController extends Controller
          $qtyAvailable=$qtyStore-$qtySold; //so luong co san
 
          $itemProduct = Product::find($id)->toArray();
+        //  dd($itemProduct);
          //list review of product
          $listReviewOfProduct = DB::table('reviews')->where('product_id',$id)->get();
           //dd($listReviewOfProduct->toArray());
          //chay for dr lay name nguoi review
          if($listReviewOfProduct->toArray()==null){
           $convertReviewOfProduct=null;
+          $avg = 0;
+          $slvalue = 0;
         }else {
           foreach ($listReviewOfProduct as $key => $value) {
             if($value->guest_id==null) {
@@ -137,9 +140,9 @@ class ProductController extends Controller
          }
          
 
-         $avg=DB::table('reviews')->select('product_id',DB::raw('AVG(value) as avg'))->groupBy('product_id')->where('product_id','=',$id)->get();
-         $listValue=DB::table('reviews')->select('product_id','value')->where('product_id','=',$id)->get();
-         $avg = round($avg[0]->avg,0);
+         $avg = DB::table('reviews')->select('product_id',DB::raw('AVG(value) as avg'))->groupBy('product_id')->where('product_id','=',$id)->get();
+         $listValue = DB::table('reviews')->select('product_id','value')->where('product_id','=',$id)->get();
+         $avg = round($avg[0]->avg, 0);
 
        // $listReview = Review::where('product_id', $id)->groupBy('value')->select(\DB::raw('value, count(value) as number'))->get();
        // dd($listReview->toArray());
