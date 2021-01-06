@@ -44,7 +44,7 @@
                     <th>Hãng</th>
       					    <th>Số lượng</th>
       					    <th>Giá bán</th>	
-        						<th>Ngày tạo</th>
+        						<th>Hạn Sử Dụng</th>
         						
         						<th >Hành động</th>
 				
@@ -60,7 +60,7 @@
                     <td>{{$rel->category->name}}</td>
         						<td>{{$rel->quantity}}</td>
         						<td>{{number_format($rel->price)}}</td>
-        						<td>{{date("d-m-Y", strtotime("$rel->created_at"))}}</td>
+        						<td>{{date("d-m-Y", strtotime("$rel->HSD"))}}</td>
         					
                     	<td >
                       		<div class="btn-group btn-group-sm">

@@ -44,7 +44,23 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $file = $request->file('file');
-
+        $request->validate([
+                'name'=>'required',
+                'title'=>'required',
+                'description'=>'required',
+                'price'=>'required',
+                'quantity'=>'required',
+                'color'=>'required',
+                'warranty'=>'required'
+            ],[
+                'name.required' =>'Vui lòng nhập tên sản phẩm!',
+                'title.required' =>'Vui lòng nhập tiêu đề sản phẩm!',
+                'description.required' =>'Vui lòng nhập mô tả sản phẩm!',
+                'price.required' =>'Vui lòng nhập giá sản phẩm!',
+                'quantity.required' =>'Vui lòng nhập số lượng sản phẩm!',
+                'color.required' =>'vui lòng nhập màu sản phẩm!',   
+                'warranty.required' =>'Vui lòng nhập bảo hành sản phẩm!'
+            ]);
         if(!empty($file)) {
             foreach ($file as $key => $value) {
                  $newName = md5(microtime(true)).$value->getClientOriginalName();
@@ -52,7 +68,8 @@ class ProductController extends Controller
             $dataNameImage[$key]=$newName;
             }
         }
-        $data = $request->except('_token');
+        $data = $request->all();
+        // dd($data);
         $data['image'] = '/admin/images/products/'.$dataNameImage[0];
        $product =  Product::create($data);
        foreach ($dataNameImage as $key => $value) {
@@ -98,7 +115,7 @@ class ProductController extends Controller
     public function update(ProductRequest $request, $id)
     {
         $product = Product::find($id);
-        $data = $request->except('_token', '_method');
+        $data = $request->all();
         if($request->hasFile('image')){
             //code upload file
             $newName =md5(microtime(true)).$request->file('image')->getClientOriginalName();
@@ -108,57 +125,7 @@ class ProductController extends Controller
         $data['image'] = '/admin/images/products/'.$newName;
         $product->update($data);
         return redirect()->route('product.index')->with(['message'=>'Đã sửa thành công!!']);
-        // $this->validate($request,
-		// [
-		// 	'category_id'=>'required',
-		// 	'name'=>'required|min:3|unique:Product,name',
-		// 	'title'=>'required',
-        //     'description'=>'required',
-        //     'price'=>'required',
-        //     'quantity'=>'required',
-        //     'color'=>'required',
-        //     'warranty'=>'required'
-		// ],[
-        //     'category_id.required'=>'Bạn chưa chọn hãng sản xuất',
-        //     'name.required'=>'Bạn chưa nhập tên',
-		// 	'title.required'=>'Bạn chưa nhập tiêu đề',		
-        //     'description.required'=>'Bạn chưa nhập nội dung',
-        //     'price.required'=>'Bạn chưa nhập giá',
-        //     'qunatity.required'=>'Bạn chưa nhập số lượng',
-        //     'color.required'=>'Bạn chưa nhập màu',
-        //     'warranty.required'=>'Bạn chưa nhập thời gian bảo hành'
-            
-        // ]);
-        // $product->name = $request->name;
-		// $product->title = $request->title;
-		// $product->category_id = $request->categories;
-		// $product->description = $request->description;
-        // $product->price = $request->price;
-        // $product->quantity = $request->quantity;
-        // $product->color = $request->color;
-        // $product->warranty = $request->warranty;
-
-        // if($request->hasFile('image'))
-		// {
-		// 	$file = $request->file('image');// lưu hình vào biến file
-		// 	$duoi = $file->getClientOriginalExtension();
-		// 	if($duoi != 'jpg' && $duoi != 'png' && $duoi != 'jpeg')
-		// 	{
-		// 		return redirect('admin/product/create')->with('thongbao','lỗi bạn chỉ được chọn file có đuôi jpg, png, jpeg');
-		// 	}
-		// 	$name = $file->getClientOriginalName();
-		// 	$image = str_random(4)."_". $name;//radom ko để trùng tên hình
-		// 	while(file_exists("admin/images/products/".$image))
-		// 	{
-		// 		$image = str_random(4)."_". $name;
-		// 	}
-		// 	$file->move("admin/images/products",$image);
-		// 	unlink("uploads/product/".$product->image);//xóa file cũ 
-		// 	$product->image = $image;
-
-		// }
-		// $product->save();
-		// return redirect('admin/product'.$id)->with('thongbao','Sửa thành công');
+       
     }
 
     /**

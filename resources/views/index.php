@@ -6,6 +6,6 @@
     <title>Cosmetic</title>
 </head>
 <body>
-    <h1>Hiển thị danh sách khách hàng</h1>
+    <h1>Hiển thị danh sách người dùng</h1>
 </body>
 </html>
