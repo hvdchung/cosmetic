@@ -11,17 +11,16 @@ class IndexController extends Controller
 {
     public function index(){
         
-        // tổng danh mục sản phẩm
+        
         $StatisticalCategory = \DB::table('categories')->select('id')->count();
-        // tổng sản phẩm
+        
         $StatisticalProduct = \DB::table('products')->select('id')->count();
-        // Tổng user 
+        
         $StatisticalUsers   = \DB::table('users')->select('id')->count();
-        // Tổng đơn hàng 
+         
         $StatisticalOrder   = \DB::table('orders')->select('id')->count();
 
-        // Xắp xếp đơn hàng mới nhất
-        $oders = Order::orderByDesc('id')->limit(5)->get();
+        $oders = Order::orderByDesc('id')->paginate(5);
         
         $viewData = [
             'StatisticalCategory' => $StatisticalCategory,

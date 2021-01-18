@@ -26,7 +26,7 @@
 					@foreach ($image as $value)
 						<div class="product-preview">
 						<img src="{{asset($value->name)}}" alt="" style="height:160px;width:100%">
-					</div>
+						</div>
 					@endforeach
 					
 				</div>
@@ -108,7 +108,7 @@
 												<th class="danger">Bảo hành</th>
 												<td>{{$itemProduct['warranty']}}</td>
 											</tr>
-											
+											<!-- thêm ngày sản xuất hạn sử dụng -->
 											<tr> 
 												<th class="danger">NSX</th>
 												<td>{{date("d-m-Y", strtotime($itemProduct['NSX']))}}</td>
