@@ -51,7 +51,9 @@ class ProductController extends Controller
                 'price'=>'required',
                 'quantity'=>'required',
                 'color'=>'required',
-                'warranty'=>'required'
+                'warranty'=>'required',
+                'file' =>'required',
+
             ],[
                 'name.required' =>'Vui lòng nhập tên sản phẩm!',
                 'title.required' =>'Vui lòng nhập tiêu đề sản phẩm!',
@@ -59,7 +61,8 @@ class ProductController extends Controller
                 'price.required' =>'Vui lòng nhập giá sản phẩm!',
                 'quantity.required' =>'Vui lòng nhập số lượng sản phẩm!',
                 'color.required' =>'vui lòng nhập màu sản phẩm!',   
-                'warranty.required' =>'Vui lòng nhập bảo hành sản phẩm!'
+                'warranty.required' =>'Vui lòng nhập bảo hành sản phẩm!',
+                'file.required' =>'vui lòng nhập hình ảnh sản phẩm!',
             ]);
         if(!empty($file)) {
             foreach ($file as $key => $value) {
@@ -71,9 +74,11 @@ class ProductController extends Controller
         $data = $request->all();
         // dd($data);
         $data['image'] = '/admin/images/products/'.$dataNameImage[0];
-       $product =  Product::create($data);
-       foreach ($dataNameImage as $key => $value) {
-         $dataTableImage[] = ['product_id'=>$product->id, 'name'=> '/admin/images/products/'.$value];
+        $data['image2'] = '/admin/images/products/'.$dataNameImage[1];
+        $data['image3'] = '/admin/images/products/'.$dataNameImage[2];
+        $product =  Product::create($data);
+        foreach ($dataNameImage as $key => $value) {
+        $dataTableImage[] = ['product_id'=>$product->id, 'name'=> '/admin/images/products/'.$value];
        }
        Image::insert($dataTableImage);   
         return redirect()->route('product.index')->with(['message'=>'Đã tạo thành công !!']);

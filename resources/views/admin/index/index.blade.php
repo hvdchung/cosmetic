@@ -9,44 +9,35 @@
 			</div>
 		</div>
 		
-		<!-- end main title -->
-
-		<!-- stats -->
 		<div class="col-12 col-sm-6 col-xl-3">
 			<div class="">
 			<i class="fas fa-braille"></i><span  style="font-size:20px"> SẢN PHẨM</span>
-				<h2>{{$StatisticalProduct}} <a style="font-size:15px" href="">(chi tiết)</a></h2>
+				<h2>{{$StatisticalProduct}} <a style="font-size:15px" href="{{ url('/admin/product') }}">(chi tiết)</a></h2>
 				
 			</div>
 		</div>
-		<!-- end stats -->
 
-		<!-- stats -->
 		<div class="col-12 col-sm-6 col-xl-3">
 			<div class="">
 			<i class="icon ion-ios-person"></i><span  style=" font-size:20px"> USER</span>
-				<h2>{{$StatisticalUsers}} <a style="font-size:15px" href="">(chi tiết)</a> </h2>
+				<h2>{{$StatisticalUsers}} <a style="font-size:15px" href="{{ url('/admin/user') }}">(chi tiết)</a> </h2>
 				
 			</div>
 		</div>
-		<!-- end stats -->
 
-		<!-- stats -->
 		<div class="col-12 col-sm-6 col-xl-3">
 			<div class="">
 			<i class="fas fa-align-justify"></i> <span  style=" font-size:20px">DANH MỤC SẢN PHẨM</span>
-				<h2>{{$StatisticalCategory}} <a style="font-size:15px" href="">(chi tiết)</a></h2>
+				<h2>{{$StatisticalCategory}} <a style="font-size:15px" href="{{ url('/admin/category') }}">(chi tiết)</a></h2>
 				
 			</div>
 		</div>
 		
-		<!-- end stats -->
-		
-		<!-- stats -->
+
 		<div class="col-12 col-sm-6 col-xl-3">
 			<div class="">
 			<i class="fas fa-shopping-cart"></i> <span style=" font-size:20px">ĐƠN HÀNG</i></span>
-				<h2>{{$StatisticalOrder}} <a style="font-size:15px" href="">(chi tiết)</a></h2>
+				<h2>{{$StatisticalOrder}} <a style="font-size:15px" href="{{ url('/admin/order') }}">(chi tiết)</a></h2>
 				
 			</div>
 		</div>
@@ -95,6 +86,7 @@
 						@endforeach
 						</tbody>
 					</table>
+					<div class="clearfix">{{$oders->links()}}</div>
 				</div>
 			</div>
 		</div>
@@ -122,7 +114,7 @@
 								<th>STATUS</th>
 							</tr>
 						</thead>
-						<tbody>
+						<!-- <tbody>
 							<tr>
 								<td>
 									<div class="main__table-text">26</div>
@@ -193,7 +185,7 @@
 									<div class="main__table-text main__table-text--green">Visible</div>
 								</td>
 							</tr>
-						</tbody>
+						</tbody> -->
 					</table>
 				</div>
 			</div>

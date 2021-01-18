@@ -65,6 +65,21 @@
 					
 					</div>
 				</div>
+				<!-- Thêm Hình ảnh 2 - 3 -->
+				<label for="">Hình ảnh 2</label>
+				<div class="form-group">
+					<div class="custom-file">
+					<input type="file" name="file[]"  multiple>
+					
+					</div>
+				</div>
+				<label for="">Hình ảnh 3</label>
+				<div class="form-group">
+					<div class="custom-file">
+					<input type="file" name="file[]"  multiple>
+					
+					</div>
+				</div>
 
 				<!-- NSX - HSD -->
 				<div class="form-group">
@@ -76,7 +91,7 @@
 					<label for="">Hạn Sản Dụng</label>
 					<input type="date" name="HSD" value="{{old('HSD')?old('HSD'):''}}" class="form-control" id="" placeholder="Input field">
 				</div>
-				
+				<!-- Hết NSX - HSD -->
            </div>
            <div class="card-body_2" style="width: 400px;float:left;">
 				<div class="form-group">

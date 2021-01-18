@@ -176,7 +176,7 @@ class ProductController extends Controller
        }
        
        $relateProduct=Category::find(Product::find($id)->category_id)->products->toArray();
-       //////////////////Lây ảnh hien thị
+      //  Lây ảnh hien thị 1 -2 -3
        $image = Image::Where('product_id',$id)->get();
        
        //////////////

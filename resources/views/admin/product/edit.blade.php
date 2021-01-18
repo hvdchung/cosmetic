@@ -72,9 +72,26 @@
 			<div class="form-group">
 				<p><img width="250px" src="{{asset($product->image)}}" alt=""></p>
 				<input type="file" name="image" class="form-control" >
-				
+			</div>
+			<!-- Thêm Hình ảnh 2 - 3 -->
+			<label for="">Hình ảnh 2</label>
+				<div class="form-group">
+					<div class="custom-file">
+					<input type="file" name="image"  multiple>
+					
+					</div>
+				</div>
+				<label for="">Hình ảnh 3</label>
+				<div class="form-group">
+					<div class="custom-file">
+					<input type="file" name="image"  multiple>
+					
+					</div>
 				</div>
 			</div>
+
+			
+			<!-- thêm NSX _ HSD -->
 			<div class="form-group">
 					<label for="">Ngày Sản Xuất</label>
 					<input type="date" name="NSX" value="{{old('NSX')?old('NSX'):''}}" class="form-control" id="" placeholder="Input field">
@@ -84,7 +101,7 @@
 					<label for="">Hạn Sản Dụng</label>
 					<input type="date" name="HSD" value="{{old('HSD')?old('HSD'):''}}" class="form-control" id="" placeholder="Input field">
 				</div>
-		
+			<!-- hết NSX - HSD -->
 		</div>
 		<div class="col-6">
 			<div class="form-group">
